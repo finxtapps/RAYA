@@ -1,0 +1,29 @@
+services:
+  admin:
+    build: ./admin
+    ports:
+      - "5174:80"
+    networks:
+      - network
+    depends_on:
+      - backend
+    
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    networks:
+      - network
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge

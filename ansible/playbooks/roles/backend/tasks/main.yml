@@ -1,0 +1,45 @@
+---
+# tasks file for backend
+- name: Install backend dependencies
+  become: true
+  npm:
+    path: /opt/food-delivery/backend
+    state: present
+  
+- name: Install PM2 globally
+  become: true
+  npm: 
+    name: pm2
+    global: yes
+
+- name: Check if start.js exists
+  stat: 
+    path: /opt/food-delivery/backend/server.js
+  register: server_js
+
+- name: Debugging server.js existence
+  debug:
+    msg: "Server.js status: {{server_js.stat.exists}}" 
+
+- name: Check the PM2 list
+  become: true
+  command: pm2 list
+  register: pm2_list
+  changed_when: false
+
+- name: Debug the Pm2 list
+  debug: 
+    var: pm2_list
+    
+- name: Start or restart the backend with pm2
+  become: true
+  command : "pm2 start -f server.js"
+  args:
+    chdir: /opt/food-delivery/backend
+  when: server_js.stat.exists
+
+- name: Set pm2 to start on boot
+  become: true
+  command: pm2 startup
+  args:
+    chdir: /opt/food-delivery/backend

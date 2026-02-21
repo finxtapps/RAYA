@@ -1,0 +1,13 @@
+---
+# tasks file for frontend
+- name: Install frontend dependencies
+  become: true #yes
+  npm:
+    path: /opt/food-delivery/frontend
+    state: present
+
+- name: Start frontend application
+  become: true  #yes
+  command: npm run dev
+  args:
+    chdir: /opt/food-delivery/frontend

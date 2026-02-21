@@ -1,0 +1,13 @@
+---
+# tasks file for admin
+- name: Install admin dependencies
+  become: true #yes
+  npm:
+    path: /opt/food-delivery/admin
+    state: present
+
+- name: Start admin application
+  become: true  #yes
+  command: npm run dev
+  args:
+    chdir: /opt/food-delivery/admin
