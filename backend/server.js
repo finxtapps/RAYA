@@ -9,11 +9,20 @@ import orderRouter from './routes/orderRoute.js';
 
 // app config
 const app = express();
-const port = 4000
+const port = process.env.PORT || 4000
 
 // middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:5174',
+        'https://rayar1fw.vercel.app',
+        'https://raya-r1fw-git-main-finxtapps-projects.vercel.app',
+        'https://raya-r1fw-finxtapps-projects.vercel.app'
+    ],
+    credentials: true
+}))
 
 // db connection
 connectDB();
