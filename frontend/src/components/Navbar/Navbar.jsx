@@ -8,7 +8,7 @@ const Navbar = ({setShowLogin}) => {
 
     const [menu, setMenu] = useState("home");
 
-    const {getTotalCartAmount,token,setToken} = useContext(StoreContext);
+    const {getTotalCartAmount,token,setToken,cartItems} = useContext(StoreContext);
 
     const navigate = useNavigate();
 
@@ -16,6 +16,17 @@ const Navbar = ({setShowLogin}) => {
         localStorage.removeItem("token");
         setToken("");
         navigate("/");
+    }
+
+    // Calculate total items in cart
+    const getTotalCartItems = () => {
+        let totalItems = 0;
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
+                totalItems += cartItems[item];
+            }
+        }
+        return totalItems;
     }
 
   return (
@@ -31,7 +42,7 @@ const Navbar = ({setShowLogin}) => {
             <img src={assets.search_icon} alt=''/>
             <div className='navbar-search-icon'>
                 <Link to='/cart' ><img src={assets.basket_icon} alt=''/></Link>
-                <div className={getTotalCartAmount()===0?"":"dot"}></div>
+                {getTotalCartItems() > 0 && <div className='cart-badge'>{getTotalCartItems()}</div>}
             </div>
             {!token?<button onClick={()=>setShowLogin(true)}>sign in</button>
             :<div className='navbar-profile'>

@@ -2,7 +2,6 @@ import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import validator from "validator"
-import { response } from "express";
 
 // login user
 const loginUser = async (req,res)=>{
@@ -11,7 +10,7 @@ const loginUser = async (req,res)=>{
         const user = await userModel.findOne({email});
 
         if (!user) {
-            return res.json({success:true, message:"User Doesn't exist"})
+            return res.json({success:false, message:"User Doesn't exist"})
         }
 
         const isMatch = await bcrypt.compare(password,user.password);
