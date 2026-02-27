@@ -128,7 +128,7 @@ const Cart = () => {
               >
                 <div className='slot-info'>
                   <h4>Dinner</h4>
-                  <p>7:00 PM - 6:00 PM (next day)</p>
+                  <p>7:00 AM - 6:00 PM</p>
                 </div>
                 <span className='time-remaining'>{getTimeRemaining('dinner', selectedDay)}</span>
               </div>
