@@ -1,10 +1,14 @@
 .header{
     height: 34vw;
     min-height: 400px;
+    max-height: 600px;
     margin: 30px auto;
-    background: url('/header_img.png') no-repeat;
-    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     position: relative;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 
