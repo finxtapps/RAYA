@@ -1,4 +1,6 @@
+import 'dotenv/config'
 import express from 'express';
+
 import cors from 'cors';
 import connectDB from './config/db.js';
 import foodRouter from './routes/foodRoute.js';
@@ -39,6 +41,7 @@ app.get('/', (req, res)=>{
 })
 
 app.listen(port, '0.0.0.0', ()=>{
+    console.log(process.env.STRIPE_SECRET_KEY);
     console.log(`Server Started on http://localhost:${port}`);
 })
 
