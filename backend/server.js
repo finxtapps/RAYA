@@ -19,7 +19,7 @@ app.use(cors({
     origin: [
         'http://localhost:5173',
         'http://localhost:5174',
-        'https://rayar1fw.vercel.app',
+        'https://raya-gamma.vercel.app/',
         'https://raya-r1fw-git-main-finxtapps-projects.vercel.app',
         'https://raya-r1fw-finxtapps-projects.vercel.app'
     ],
