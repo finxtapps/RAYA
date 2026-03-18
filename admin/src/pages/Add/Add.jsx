@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
-import './Add.css'
-import { assets } from '../../assets/assets'
 import axios from 'axios'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
+import { assets } from '../../assets/assets'
+import './Add.css'
 
-const Add = ({url}) => {
+const Add = ({ url }) => {
 
     const [image, setImage] = useState(false);
     const [data, setData] = useState({
         name: "",
         description: "",
         price: "",
-        category: "Salad"
+        category: "Monday",
+        mealType: "Breakfast"
     })
     const onChangeHandler = (event) => {
         const name = event.target.name;
@@ -26,6 +27,7 @@ const Add = ({url}) => {
         formData.append("description", data.description)
         formData.append("price", Number(data.price))
         formData.append("category", data.category)
+        formData.append("mealType", data.mealType)
         formData.append("image", image)
         const response = await axios.post(`${url}/api/food/add`, formData);
         if (response.data.success) {
@@ -33,7 +35,8 @@ const Add = ({url}) => {
                 name: "",
                 description: "",
                 price: "",
-                category: "Salad"
+                category: "Monday",
+                mealType: "Breakfast"
             })
             setImage(false)
             toast.success(response.data.message)
@@ -65,14 +68,21 @@ const Add = ({url}) => {
                     <div className='add-category flex-col'>
                         <p>Product category</p>
                         <select onChange={onChangeHandler} name='category'>
-                            <option value="Salad">Salad</option>
-                            <option value="Rolls">Rolls</option>
-                            <option value="Deserts">Deserts</option>
-                            <option value="Sandwich">Sandwich</option>
-                            <option value="Cake">Cake</option>
-                            <option value="Pure Veg">Pure Veg</option>
-                            <option value="Pasta">Pasta</option>
-                            <option value="Noodles">Noodles</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thrusday">Thrusday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+                    <div className='add-category flex-col'>
+                        <p>Meal type</p>
+                        <select onChange={onChangeHandler} name='mealType'>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
                         </select>
                     </div>
                     <div className='add-price flex-col'>

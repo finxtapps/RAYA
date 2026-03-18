@@ -87,8 +87,8 @@ const Cart = () => {
                   <div key={food._id} className="meal-section">
                     <div className="meal-item">
                       <div className="meal-content">
-                        <h3 className="meal-name">{food.name}</h3>
-                        <p className="meal-price">₹{food.price}</p>
+                          <h3 className="meal-name">{food.name}</h3>
+                          <p className="meal-price">₹{food.price}</p>
                       </div>
                       <div className="meal-controls">
                         {quantity > 0 ? (

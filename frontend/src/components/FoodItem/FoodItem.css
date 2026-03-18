@@ -13,18 +13,10 @@
 .food-item-info{
     padding: 20px;
 }
-.food-item-name-rating{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.food-item-name-rating p{
+.food-item-name{
     font-size: 20px;
     font-weight: 500;
-}
-.food-item-name-rating img{
-    width: 70px;
+    margin: 0 0 10px 0;
 }
 .food-item-desc{
     color: #676767;

@@ -7,7 +7,7 @@ import menu_3 from "./menu_3.png";
 import menu_4 from "./menu_4.png";
 import menu_5 from "./menu_5.png";
 import menu_6 from "./menu_6.png";
-import menu_7 from "./menu_7.png";
+import menu_7 from "./menu_7.jpeg";
 import search_icon from "./search_icon.png";
 
 import food_1 from "./food_1.png";
@@ -64,6 +64,10 @@ export const assets = {
 
 export const menu_list = [
   {
+    menu_name: "Sunday",
+    menu_image: menu_7,
+  },
+  {
     menu_name: "Monday",
     menu_image: menu_1,
   },
@@ -86,10 +90,6 @@ export const menu_list = [
   {
     menu_name: "Saturday",
     menu_image: menu_6,
-  },
-  {
-    menu_name: "Sunday",
-    menu_image: menu_7,
   },
 ];
 
